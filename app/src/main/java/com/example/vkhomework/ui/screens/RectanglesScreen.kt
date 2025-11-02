@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import com.example.vkhomework.R
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -21,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import com.example.vkhomework.GridViewModel
+import com.example.vkhomework.R
 import com.example.vkhomework.ui.AppDimens
 import com.example.vkhomework.ui.Constants
 import com.example.vkhomework.ui.components.SquareBox
@@ -50,7 +50,7 @@ fun RectangleScreen(viewModel: GridViewModel) {
                 SquareBox(index = index, backgroundColor = backgroundColor)
             }
         }
-
+        Spacer(modifier = Modifier.height(AppDimens.paddingLarge))
         FloatingActionButton(
             onClick = { viewModel.addRectangle() },
             containerColor = LightGray,
