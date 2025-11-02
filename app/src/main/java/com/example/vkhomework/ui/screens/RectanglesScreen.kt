@@ -51,8 +51,6 @@ fun RectangleScreen(viewModel: GridViewModel) {
             }
         }
 
-        Spacer(modifier = Modifier.Companion.height(AppDimens.paddingLarge))
-
         FloatingActionButton(
             onClick = { viewModel.addRectangle() },
             containerColor = LightGray,
