@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -23,6 +24,7 @@ import com.example.vkhomework.GridViewModel
 import com.example.vkhomework.R
 import com.example.vkhomework.ui.AppDimens
 import com.example.vkhomework.ui.Constants
+import com.example.vkhomework.ui.Constants.EVEN_DIVIDER
 import com.example.vkhomework.ui.components.SquareBox
 import com.example.vkhomework.ui.theme.BlueGradient
 import com.example.vkhomework.ui.theme.LightGray
@@ -46,15 +48,18 @@ fun MainScreen(viewModel: GridViewModel) {
             columns = GridCells.Fixed(columns),
             modifier = Modifier.weight(1f)
         ) {
-            items(squares.size) {
+            items(squares) {
                 index ->
-                val backgroundColor = if (index % 2 == 0 ) RedGradient else BlueGradient
-                SquareBox(index = index, backgroundColor = backgroundColor)
+                val backgroundColor = if (index % EVEN_DIVIDER == 0 ) RedGradient else BlueGradient
+
+                SquareBox(index = index, backgroundColor = backgroundColor, onClick = {
+                    viewModel.onSquareClick(index)
+                })
             }
         }
         Spacer(modifier = Modifier.height(AppDimens.paddingLarge))
         FloatingActionButton(
-            onClick = { viewModel.addRectangle() },
+            onClick = { viewModel.onAddClick() },
             containerColor = LightGray,
             modifier = Modifier
                 .fillMaxWidth()
@@ -69,8 +74,3 @@ fun MainScreen(viewModel: GridViewModel) {
         }
     }
 }
-
-
-
-
-

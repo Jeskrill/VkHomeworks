@@ -1,6 +1,7 @@
 package com.example.vkhomework.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
@@ -17,13 +18,17 @@ import com.example.vkhomework.ui.AppDimens
 @Composable
 fun SquareBox(
     index: Int,
-    backgroundColor: Brush
-) {
+    backgroundColor: Brush,
+    onClick: () -> Unit
+)
+
+{
     Box(
         modifier = Modifier
             .aspectRatio(1f)
             .padding(AppDimens.paddingSmall)
             .background(brush = backgroundColor, shape = RoundedCornerShape(AppDimens.cornerRound))
+            .clickable {onClick()}
     ) {
         Text(
             modifier = Modifier
