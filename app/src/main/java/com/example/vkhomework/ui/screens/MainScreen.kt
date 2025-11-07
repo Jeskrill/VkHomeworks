@@ -24,11 +24,13 @@ import com.example.vkhomework.R
 import com.example.vkhomework.ui.AppDimens
 import com.example.vkhomework.ui.Constants
 import com.example.vkhomework.ui.components.SquareBox
+import com.example.vkhomework.ui.theme.BlueGradient
 import com.example.vkhomework.ui.theme.LightGray
+import com.example.vkhomework.ui.theme.RedGradient
 
 @Composable
-fun RectangleScreen(viewModel: GridViewModel) {
-    val rectanles = viewModel.rectanglesList
+fun MainScreen(viewModel: GridViewModel) {
+    val squares = viewModel.squaresList
     val configuration = LocalConfiguration.current
     val columns = remember(configuration.orientation) {
         if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
@@ -44,9 +46,9 @@ fun RectangleScreen(viewModel: GridViewModel) {
             columns = GridCells.Fixed(columns),
             modifier = Modifier.weight(1f)
         ) {
-            items(rectanles.size) {
+            items(squares.size) {
                 index ->
-                val backgroundColor = viewModel.getBackgroundColor(index)
+                val backgroundColor = if (index % 2 == 0 ) RedGradient else BlueGradient
                 SquareBox(index = index, backgroundColor = backgroundColor)
             }
         }
