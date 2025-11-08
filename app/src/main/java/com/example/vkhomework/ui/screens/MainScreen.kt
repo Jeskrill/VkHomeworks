@@ -48,9 +48,8 @@ fun MainScreen(viewModel: GridViewModel) {
             columns = GridCells.Fixed(columns),
             modifier = Modifier.weight(1f)
         ) {
-            items(squares) {
-                index ->
-                val backgroundColor = if (index % EVEN_DIVIDER == 0 ) RedGradient else BlueGradient
+            items(squares, key = { index -> index }) { index ->
+                val backgroundColor = if (index % EVEN_DIVIDER == 0) RedGradient else BlueGradient
 
                 SquareBox(index = index, backgroundColor = backgroundColor, onClick = {
                     viewModel.onSquareClick(index)
